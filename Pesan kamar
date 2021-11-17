@@ -32,7 +32,7 @@ public class KamarHotel {
     System.out.print("\n\n==== SELAMAT DATANG DI KAGE HOTEL ======\n\n");
     System.out.print("SPECIAL DISKON!!\n");
     System.out.print("Pelanggan biasa :  jika menginap lebih dari 7 hari  mendapat diskon 15%\n");
-    System.out.print("Pelanggan Member : jika menginap lebih dari 7 hari mendapat diskon 35%\n\n");
+    System.out.print("Pelanggan Member : jika menginap lebih dari 7 hari mendapat diskon 35% , jika 4 - 7 hari mendapat diskon diskon 10% \n\n");
     System.out.print("Silahkan masukkan jenis pelanggan\n\n");
     System.out.print("jenis pelanggan\n ");
     System.out.print("1. Biasa\n");
@@ -67,7 +67,7 @@ public class KamarHotel {
             else if(menginap > 3 && menginap <8){
             System.out.print("\nAnda berhasil memesan Family Room\n");
             System.out.println("Lama menginap"+menginap+ "hari");
-            System.out.print("\nHarga = Rp. "+ (familyRoom*menginap - (familyRoom*menginap*0.1f)));
+            System.out.print("\nHarga = Rp. "+ (familyRoom*menginap - (familyRoom*menginap)));
             System.out.println("Jumlah Bayar = Rp. ");
             int bayar = saya.nextInt();
             System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");
@@ -95,7 +95,7 @@ public class KamarHotel {
         if(menginap > 3 && menginap <8){
             System.out.println("Anda berhasil memesan Executif Room");
             System.out.println("Lama menginap"+menginap+"hari");
-            System.out.println("Harga = Rp. "+ (executifRoom*menginap - (executifRoom*menginap*0.1f)));
+            System.out.println("Harga = Rp. "+ (executifRoom*menginap - (executifRoom*menginap)));
             System.out.println("Jumlah Bayar = Rp. ");
             int bayar = saya.nextInt();
             System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");
@@ -103,7 +103,7 @@ public class KamarHotel {
         else if(menginap > 7){
             System.out.println("Anda berhasil memesan Executif Room");
             System.out.println("Lama menginap"+menginap+"hari");
-            System.out.println("Harga = Rp. "+ (executifRoom*menginap - (executifRoom*menginap*0.15f)));
+            System.out.println("Harga = Rp. "+ (executifRoom*menginap - (executifRoom*menginap)));
             System.out.println("Jumlah Bayar = Rp. ");
             int bayar = saya.nextInt();
            System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");
@@ -122,7 +122,7 @@ public class KamarHotel {
         if(menginap > 3 && menginap <8){
             System.out.println("Anda berhasil memesan Deluxe Room");
             System.out.println("Lama menginap"+menginap+"hari");
-            System.out.println("Harga = Rp. "+ (deluxeRoom*menginap - (deluxeRoom*menginap*0.1f)));
+            System.out.println("Harga = Rp. "+ (deluxeRoom*menginap - (deluxeRoom*menginap)));
             System.out.println("Jumlah Bayar = Rp. ");
             int bayar = saya.nextInt();
           System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");
@@ -149,7 +149,7 @@ public class KamarHotel {
         if(menginap > 3 && menginap <8){
             System.out.println("Anda berhasil memesan Standard Room");
             System.out.println("Lama menginap"+menginap+"hari");
-            System.out.println("Harga = Rp. "+ (standardRoom*menginap - (standardRoom*menginap*0.1f)));
+            System.out.println("Harga = Rp. "+ (standardRoom*menginap - (standardRoom*menginap)));
             System.out.println("Jumlah Bayar = Rp. ");
             int bayar = saya.nextInt();
             System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");  
