@@ -1,4 +1,3 @@
-
 //package kamarhotel;
 import java.util.Scanner;
 
@@ -33,28 +32,27 @@ public class Kamar {
     System.out.print("SPECIAL DISKON!!\n");
     System.out.print("Pelanggan biasa :  jika menginap lebih dari 7 hari  mendapat diskon 15%\n");
     System.out.print("Pelanggan Member : jika menginap lebih dari 7 hari mendapat diskon 35% , jika 4 - 7 hari mendapat diskon diskon 10% \n\n");
-    System.out.print("Silahkan masukkan jenis pelanggan\n\n");
     System.out.print("jenis pelanggan\n ");
     System.out.print("1. Biasa\n");
-    System.out.print(" 2. Member\n\n");
+    System.out.print(" 2. Member\n");
     
     Scanner saya = new Scanner (System.in);
-    System.out.println("masukkan jenis pelanggan : ");
+    System.out.print("masukkan jenis pelanggan : ");
     int pelanggan = saya.nextInt();
     
     Scanner nama = new Scanner (System.in);
     System.out.print("\nSilahkan Masukkan Nama Anda: ");
     String name = nama.nextLine();
 
-    System.out.print("1. Family Room = Rp. 2.700.000/malam\n");
+    System.out.print("\n1. Family Room = Rp. 2.700.000/malam\n");
     System.out.println("2. Executif Room = Rp. 1.500.000/malam");
     System.out.println("3. Deluxe Room = Rp. 750.000/malam");
     System.out.println("4. Standard Room = Rp. 150.000/malam");
     
     
-    System.out.println("Masukkan jenis kamar : ");
+    System.out.print("Masukkan jenis kamar : ");
     int kamar = saya.nextInt();
-    System.out.println("Lama anda menginap : ");
+    System.out.print("\nLama anda menginap : ");
     int menginap = saya.nextInt();
     
     
