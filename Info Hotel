@@ -6,7 +6,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class InformasiKamar extends JFrame{
-
     public InformasiKamar() {
         setTitle("Infomasi Kamar Hotel-6-Kage");
         setSize(350, 200);
