@@ -15,5 +15,14 @@ public class checkOut {
         System.out.print("Masukkan nomor kamar anda : ");
         nomorKamar = scan.nextInt();
 
+         }
+
+    public void cekData(){
+        String fileName = "src/puisi.txt" ; 
         
-    }
+        try {
+            
+            File myFile = new File(fileName);
+            Scanner fileReader = new Scanner(myFile);
+        }
+        
