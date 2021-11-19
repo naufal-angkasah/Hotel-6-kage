@@ -1,3 +1,19 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class checkOut {
 
-}
+    public void inputData() {
+        String name;
+        int nomorKamar;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Masukkan nama anda : ");
+        name = scan.nextLine();
+
+        System.out.print("Masukkan nomor kamar anda : ");
+        nomorKamar = scan.nextInt();
+
+        
+    }
