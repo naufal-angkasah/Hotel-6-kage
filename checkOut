@@ -18,11 +18,18 @@ public class checkOut {
          }
 
     public void cekData(){
-        String fileName = "src/puisi.txt" ; 
+        String fileName = "scr/namaFile" ; 
         
         try {
-            
-            File myFile = new File(fileName);
+            // Membaca file
+            File myFile = new File(fileName); // (fileName)--> nama filenya nanti
             Scanner fileReader = new Scanner(myFile);
         }
+        
+        catch (FileNotFoundException e) {
+            System.out.println("Terjadi Kesalahan: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
         
