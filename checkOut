@@ -27,7 +27,7 @@ public class checkOut {
         }
         
         catch (FileNotFoundException e) {
-            System.out.println("Terjadi Kesalahan: " + e.getMessage());
+            System.out.println("Terjadi Kesalahan saat membaca file yang diinginkan: " + e.getMessage());
             e.printStackTrace();
         }
     }
