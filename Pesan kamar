@@ -61,14 +61,15 @@ public class Kamar {
     System.out.println("+-----------------------------------+");
     System.out.println("KEPADA PELANGGAN KAMI " + "'" +name+ "'");
     
-   try(FileWriter fw = new FileWriter("testout.txt")){    
-
+    try{
+        FileWriter fw = new FileWriter("testout.txt");    
     if(pelanggan ==1){
         if(kamar == 1){
             if(menginap < 4){
                 System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
                 System.out.println("Anda Menginap Selama "+menginap+" hari");
-                System.out.println("Total Harga = Rp."+ (familyRoom*menginap));
+                int Diskon = (familyRoom*menginap);
+                System.out.println("Total Harga = Rp."+ Diskon);
                 System.out.println("Bagaimana anda ingin membayar? ");
                 System.out.println("1. Dengan Tunai.");
                 System.out.println("2. Dengan Kredit.");
@@ -77,11 +78,11 @@ public class Kamar {
                 if(pilih == 1){
                 System.out.print("Uang yang anda Masukkan = ");
                 int bayar = saya.nextInt();
-                int kurang = bayar - (familyRoom*menginap);
-                    if(bayar == familyRoom*menginap){
+                int kurang = bayar - (Diskon);
+                    if(bayar == Diskon){
                         System.out.println("Uang anda pas");
-                    }else if (bayar > (familyRoom*menginap)){
-                        int kembalian = bayar - (familyRoom*menginap);
+                    }else if (bayar > Diskon){
+                        int kembalian = bayar - Diskon;
                         System.out.println("Kembalian anda Rp." + kembalian);
                     }else{
                         System.out.println("Maaf, uang anda kurang " + kurang);
@@ -198,7 +199,8 @@ public class Kamar {
             if(menginap < 4){
                 System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
                 System.out.println("Anda Menginap Selama "+menginap+" hari");
-                System.out.println("Total Harga = Rp."+ (executifRoom*menginap));
+                int Diskon = (executifRoom*menginap);
+                System.out.println("Total Harga = Rp."+ Diskon);
                 System.out.println("Bagaimana anda ingin membayar? ");
                 System.out.println("1. Dengan Tunai.");
                 System.out.println("2. Dengan Kredit.");
@@ -207,11 +209,11 @@ public class Kamar {
                 if(pilih == 1){
                 System.out.print("Uang yang anda Masukkan = ");
                 int bayar = saya.nextInt();
-                int kurang = bayar - (executifRoom*menginap);
-                    if(bayar == executifRoom*menginap){
+                int kurang = bayar - Diskon;
+                    if(bayar == Diskon){
                         System.out.println("Uang anda pas");
-                    }else if (bayar > (executifRoom*menginap)){
-                        int kembalian = bayar - (executifRoom*menginap);
+                    }else if (bayar > Diskon){
+                        int kembalian = bayar - Diskon;
                         System.out.println("Kembalian anda Rp." + kembalian);
                     }else{
                         System.out.println("Maaf, uang anda kurang " + kurang);
@@ -327,7 +329,8 @@ public class Kamar {
             if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-            System.out.println("Total Harga = Rp."+ (deluxeRoom*menginap));
+            int Diskon = (deluxeRoom*menginap);
+            System.out.println("Total Harga = Rp."+ Diskon);
             System.out.println("Bagaimana anda ingin membayar?");
             System.out.println("1. Dengan Tunai.");
             System.out.println("2. Dengan Kredit.");
@@ -336,11 +339,11 @@ public class Kamar {
             if(pilih == 1){
             System.out.print("Uang yang anda Masukkan = ");
             int bayar = saya.nextInt();
-            int kurang = bayar - (deluxeRoom*menginap);
-            if(bayar == deluxeRoom*menginap){
+            int kurang = bayar - Diskon;
+            if(bayar == Diskon){
                 System.out.println("Uang anda pas");
-            }else if (bayar > (deluxeRoom*menginap)){
-                int kembalian = bayar - (deluxeRoom*menginap);
+            }else if (bayar > Diskon){
+                int kembalian = bayar - Diskon;
                 System.out.println("Kembalian anda Rp."+ kembalian);
             }else{
                 System.out.println("Maaf, uang anda kurang " + kurang);
@@ -458,7 +461,8 @@ public class Kamar {
         if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-            System.out.println("Total Harga = Rp. "+ (standardRoom*menginap));
+            int Diskon = (standardRoom*menginap);
+            System.out.println("Total Harga = Rp."+ Diskon);
             System.out.println("Bagaimana anda ingin membayar? ");
             System.out.println("1. Dengan Tunai.");
             System.out.println("2. Dengan Kredit.");
@@ -467,13 +471,13 @@ public class Kamar {
             if(pilih == 1){
             System.out.print("Uang yang anda Masukkan = ");
             int bayar = saya.nextInt();
-            if(bayar == standardRoom*menginap){
+            if(bayar == Diskon){
                 System.out.println("Uang anda pas");
-            }else if(bayar > standardRoom*menginap){
-                int kembalian = bayar - (standardRoom*menginap);
+            }else if(bayar > Diskon){
+                int kembalian = bayar - Diskon;
                 System.out.println("Kembalian anda Rp."+ kembalian);
             }else{
-                int kurang = bayar - (standardRoom*menginap);
+                int kurang = bayar - Diskon;
                 System.out.println("Maaf, uang anda kurang " + kurang);
                 System.out.print("Masukkan tambahan uang: ");
                 int tambah = saya.nextInt();
@@ -589,7 +593,8 @@ public class Kamar {
             if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-                System.out.println("Total Harga = Rp."+ (familyRoom*menginap));
+            int Diskon = (familyRoom*menginap);
+                System.out.println("Total Harga = Rp."+ Diskon);
                 System.out.println("Bagaimana anda ingin membayar? ");
                 System.out.println("1. Dengan Tunai.");
                 System.out.println("2. Dengan Kredit.");
@@ -598,11 +603,11 @@ public class Kamar {
                 if(pilih == 1){
                 System.out.print("Uang yang anda Masukkan = ");
                 int bayar = saya.nextInt();
-                int kurang = bayar - (familyRoom*menginap);
-                    if(bayar == familyRoom*menginap){
+                int kurang = bayar - Diskon;
+                    if(bayar == Diskon){
                         System.out.println("Uang anda pas");
-                    }else if (bayar > (familyRoom*menginap)){
-                        int kembalian = bayar - (familyRoom*menginap);
+                    }else if (bayar > Diskon){
+                        int kembalian = bayar - Diskon;
                         System.out.println("Kembalian anda Rp." + kembalian);
                     }else{
                         System.out.println("Maaf, uang anda kurang " + kurang);
@@ -718,7 +723,8 @@ public class Kamar {
             if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-            System.out.println("Total Harga = Rp."+ (executifRoom*menginap));
+            int Diskon = (executifRoom*menginap);
+            System.out.println("Total Harga = Rp."+ Diskon);
             System.out.println("Bagaimana anda ingin membayar? ");
                 System.out.println("1. Dengan Tunai.");
                 System.out.println("2. Dengan Kredit.");
@@ -727,11 +733,11 @@ public class Kamar {
                 if(pilih == 1){
                 System.out.print("Uang yang anda Masukkan = ");
                 int bayar = saya.nextInt();
-                int kurang = bayar - (executifRoom*menginap);
-                    if(bayar == executifRoom*menginap){
+                int kurang = bayar - Diskon;
+                    if(bayar == Diskon){
                         System.out.println("Uang anda pas");
-                    }else if (bayar > (executifRoom*menginap)){
-                        int kembalian = bayar - (executifRoom*menginap);
+                    }else if (bayar > Diskon){
+                        int kembalian = bayar - Diskon;
                         System.out.println("Kembalian anda Rp." + kembalian);
                     }else{
                         System.out.println("Maaf, uang anda kurang " + kurang);
@@ -846,7 +852,8 @@ public class Kamar {
             if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-            System.out.println("Total Harga = Rp."+ (deluxeRoom*menginap));
+            int Diskon = (deluxeRoom*menginap);
+            System.out.println("Total Harga = Rp."+ Diskon);
             System.out.println("Bagaimana anda ingin membayar?");
             System.out.println("1. Dengan Tunai.");
             System.out.println("2. Dengan Kredit.");
@@ -855,11 +862,11 @@ public class Kamar {
             if(pilih == 1){
             System.out.print("Uang yang anda Masukkan = ");
             int bayar = saya.nextInt();
-            int kurang = bayar - (deluxeRoom*menginap);
-            if(bayar == deluxeRoom*menginap){
+            int kurang = bayar - Diskon;
+            if(bayar == Diskon){
                 System.out.println("Uang anda pas");
-            }else if (bayar > (deluxeRoom*menginap)){
-                int kembalian = bayar - (deluxeRoom*menginap);
+            }else if (bayar > Diskon){
+                int kembalian = bayar - Diskon;
                 System.out.println("Kembalian anda Rp."+ kembalian);
             }else{
                 System.out.println("Maaf, uang anda kurang " + kurang);
@@ -974,7 +981,8 @@ public class Kamar {
         if(menginap < 4){
             System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
             System.out.println("Anda Menginap Selama "+menginap+" hari");
-            System.out.println("Total Harga = Rp. "+ (standardRoom*menginap));
+            int Diskon = (standardRoom*menginap);
+            System.out.println("Total Harga = Rp. "+ Diskon);
             System.out.println("Bagaimana anda ingin membayar? ");
             System.out.println("1. Dengan Tunai.");
             System.out.println("2. Dengan Kredit.");
@@ -983,13 +991,13 @@ public class Kamar {
             if(pilih == 1){
             System.out.print("Uang yang anda Masukkan = ");
             int bayar = saya.nextInt();
-            if(bayar == standardRoom*menginap){
+            if(bayar == Diskon){
                 System.out.println("Uang anda pas");
-            }else if(bayar > standardRoom*menginap){
-                int kembalian = bayar - (standardRoom*menginap);
+            }else if(bayar > Diskon){
+                int kembalian = bayar - Diskon;
                 System.out.println("Kembalian anda Rp."+ kembalian);
             }else{
-                int kurang = bayar - (standardRoom*menginap);
+                int kurang = bayar - Diskon;
                 System.out.println("Maaf, uang anda kurang " + kurang);
                 System.out.print("Masukkan tambahan uang: ");
                 int tambah = saya.nextInt();
@@ -1098,7 +1106,7 @@ public class Kamar {
             }
         }
     } 
-    
+    fw.write("Nama User: " + name + "\nAnda memesan kamar: " + kamar + "\nLama Anda Menginap: " + menginap+" hari"+ "\nDengan Harga: " + Diskon);
     fw.close();
     }catch(Exception e) {
         e.getStackTrace();
