@@ -1106,7 +1106,9 @@ public class Kamar {
             }
         }
     } 
-    fw.write("Nama User: " + name + "\nAnda memesan kamar: " + kamar + "\nLama Anda Menginap: " + menginap+" hari"+ "\nDengan Harga: " + Diskon);
+    System.out.print("Untuk Memastikan Kembali, Silahkan Masukkan Total Harga Pesanan Anda: Rp.");
+    int harga = saya.nextInt();
+    fw.write("Nama User: " + name + "\nAnda memesan kamar: " + kamar + "\nLama Anda Menginap: " + menginap+" hari"+ "\nDengan Harga: " + harga);
     fw.close();
     }catch(Exception e) {
         e.getStackTrace();
