@@ -5,7 +5,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author 
+ */
 public class InformasiKamar extends JFrame{
+
     public InformasiKamar() {
         setTitle("Infomasi Kamar Hotel-6-Kage");
         setSize(350, 200);
@@ -26,7 +31,7 @@ public class InformasiKamar extends JFrame{
         list.add(new Object[]{"Family Room", " 1 King Bed \n 3 Single bed \n Sofa \n Lemari Pakaian \n Ruang Tamu \n Mini Pantry \n Televisi", "2.700.000"});
         list.add(new Object[]{"Executif Room", " 1 King Bed \n 2 Single bed \n Sofa \n Lemari Pakaian \n Televisi", "1.500.000"});
         list.add(new Object[]{"Deluxe Room", " 1 King Bed \n 1 Single bed \n Sofa \n Lemari Pakaian \n Televisi", "750.000"});
-        list.add(new Object[]{"Standard Room", "  1 King Bed \n Televisi", "650.000"});
+        list.add(new Object[]{"Standard Room", " 1 King Bed \n Televisi", "650.000"});
         
         for(Object obj : list){
             model.addRow((Object[]) obj);
