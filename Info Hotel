@@ -24,9 +24,9 @@ public class InformasiKamar extends JFrame{
         
         List<Object> list = new ArrayList<>();
         list.add(new Object[]{"Family Room", " 1 King Bed \n 3 Single bed \n Sofa \n Lemari Pakaian \n Ruang Tamu \n Mini Pantry \n Televisi", "2.700.000"});
-        list.add(new Object[]{"Executif Room", " 1 King Bed \n 2 Single bed \n Televisi", "1.500.000"});
-        list.add(new Object[]{"Deluxe Room", " 1 King Bed \n 1 Single bed \n Televisi", "750.000"});
-        list.add(new Object[]{"Standard Room", " 1 King Bed  \n Televisi", "650.000"});
+        list.add(new Object[]{"Executif Room", " 1 King Bed \n 2 Single bed \n Sofa \n Lemari Pakaian \n Televisi", "1.500.000"});
+        list.add(new Object[]{"Deluxe Room", " 1 King Bed \n 1 Single bed \n Sofa \n Lemari Pakaian \n Televisi", "750.000"});
+        list.add(new Object[]{"Standard Room", "  1 King Bed \n Televisi", "650.000"});
         
         for(Object obj : list){
             model.addRow((Object[]) obj);
