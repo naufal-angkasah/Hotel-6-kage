@@ -4,32 +4,31 @@ import java.util.Scanner;
 
 public class checkOut {
 
-    public void inputData() {
+    public void static void main(String[] args) {
         String name;
-        int nomorKamar;
+        String pilih;
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Masukkan nama anda : ");
         name = scan.nextLine();
 
-        System.out.print("Masukkan nomor kamar anda : ");
-        nomorKamar = scan.nextInt();
+        System.out.print(" Nama             :" + name);
+        System.out.print(" Kamar            :" + kamar);
+        System.out.print(" Lama menginap    :" + menginap);
+        System.out.print(" Harga            :" + harga);
 
-         }
+        System.out.print("Apakah anda memesan layanan kamar sebelumnya?(ya/tidak) :");
+        pilih = scan.nextLine();
 
-    public void cekData(){
-        String fileName = "scr/namaFile" ; 
-        
-        try {
-            // Membaca file
-            File myFile = new File(fileName); // (fileName)--> nama filenya nanti
-            Scanner fileReader = new Scanner(myFile);
+        if ( pilihan == 'ya' || pilihan =='YA') {
+            System.out.println("Berikut adalah rincian dari total harga layanan kamar");
+        } else { 
+            System.out.print("Apakah anda ingin memperpanjang kamar?(ya/tidak) :");
         }
+
+
         
-        catch (FileNotFoundException e) {
-            System.out.println("Terjadi Kesalahan saat membaca file yang diinginkan: " + e.getMessage());
-            e.printStackTrace();
-        }
+    
+
     }
 }
-        
