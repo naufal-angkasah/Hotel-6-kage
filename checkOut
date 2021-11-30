@@ -14,6 +14,7 @@ public class checkOut extends pesanKamar{
         System.out.print("Masukkan nama anda : ");
         name = scan.nextLine();
 
+        // Mengecek dan membaca isi file 
         // Try-Catch untuk mengatasi error jika file yang dimaksud  tidak ditemuan
         try{
             
@@ -40,6 +41,7 @@ public class checkOut extends pesanKamar{
 
         if (pilih.equalsIgnoreCase("ya")) {
             System.out.println("Berikut adalah rincian dari total harga layanan kamar");
+            
         } else { 
             System.out.print("Apakah anda ingin memesan kamar lagi?(ya/tidak) :");
             pilih =scan.nextLine(); 
@@ -49,9 +51,9 @@ public class checkOut extends pesanKamar{
                 pesanKamar pesan = new pesanKamar();
                 
                 } else {
-                    System.out.println("-------------------------------------------------");
-                    System.out.println("Terima kasih sudah memakai layanan kami,see you!!");
-                    System.out.println("-------------------------------------------------");
+                    System.out.println("---------------------------------------------------");
+                    System.out.println("|Terima kasih sudah memakai layanan kami,see you!!|");
+                    System.out.println("---------------------------------------------------");
                 }
 
 
