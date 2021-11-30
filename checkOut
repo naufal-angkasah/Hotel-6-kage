@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class checkOut {
 
-    public void static void main(String[] args) {
+    public static void main(String[] args) {
         String name;
         String pilih;
         Scanner scan = new Scanner(System.in);
@@ -20,15 +20,21 @@ public class checkOut {
         System.out.print("Apakah anda memesan layanan kamar sebelumnya?(ya/tidak) :");
         pilih = scan.nextLine();
 
-        if ( pilihan == 'ya' || pilihan =='YA') {
+        if (pilih.equalsIgnoreCase("ya")) {
             System.out.println("Berikut adalah rincian dari total harga layanan kamar");
         } else { 
             System.out.print("Apakah anda ingin memperpanjang kamar?(ya/tidak) :");
+            pilih =scan.nextLine(); 
+
+             if ( pilihan.equalsIgnoreCase("ya")) {
+                 
+
+             } else {
+                 System.out.println("-------------------------------------------------")
+                 System.out.println("Terima kasih sudah memakai layanan kami,see you!!")
+                 System.out.println("-------------------------------------------------")
+             }
         }
-
-
-        
-    
 
     }
 }
