@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Naufal Angkasah
+ */
+public class kredit extends JFrame {
+
+    public kredit() {
+        setTitle("Infomasi Pediri Hotel-6-Kage");
+        setSize(500, 250);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        userInterfaceGUI();
+        setVisible(true);
+    }
+
+    private void userInterfaceGUI() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new Object[] {
+                "NAMA ANGGOTA", "NPM ANGGOTA"
+        });
+        JTable tabel = new JTable(model);
+
+        List<Object> list = new ArrayList<>();
+        list.add(new Object[] { "Athaya Dzakiyya", "2008107010036" });
+        list.add(new Object[] { "Birrul Walidain", "2008107010006" });
+        list.add(new Object[] { "Cut Nadila Maretna ", "2008107010003" });
+        list.add(new Object[] { "Hamal Rizqy Mukhda", "2008107010045" });
+        list.add(new Object[] { "Muhammad Fhonna Fhalevi", "2008107010085" });
+        list.add(new Object[] { "Naufal Angkasah (CEO)", "2008107010018" });
+        
+
+        for (Object obj : list) {
+            model.addRow((Object[]) obj);
+        }
+
+        JScrollPane scroll = new JScrollPane();
+        scroll.setViewportView(tabel);
+
+        getContentPane().add(scroll);
+    }
+
+    public static void main(String[] args) {
+        kredit obj = new kredit();
+    }
+}
