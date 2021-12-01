@@ -1,27 +1,27 @@
-//package kasirtoko;
+//package KamarHotel;
 
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
 import java.util.Locale;
 
-public class KasirToko extends javax.swing.JFrame {
+public class KamarHotel extends javax.swing.JFrame {
 
 public StringTokenizer token;
 public String gantiformat="";
-public String namabrg= "";
+public String namakamar= "";
 public int jmlbeli;
 public long jmlharga;
-public long hargabrg;
+public long hargakamar;
 public long totalbiaya;
 public long kembalian;
 public long jmlbayar;
 
 /**
-* Creates new form KasirToko
+* Creates new form KamarHotel
 */
-public KasirToko() {
+public KamarHotel() {
     initComponents();
-    CB_namabrg.setSelectedIndex(-1);
+    CB_namakamar.setSelectedIndex(-1);
 }
 
 @SuppressWarnings("unchecked")
@@ -29,11 +29,11 @@ public KasirToko() {
 private void initComponents() {
 
     jLabel1 = new javax.swing.JLabel();
-    CB_namabrg = new javax.swing.JComboBox<>();
+    CB_namakamar = new javax.swing.JComboBox<>();
     jLabel2 = new javax.swing.JLabel();
-    Txthargabrg = new javax.swing.JTextField();
+    Txthargakamar = new javax.swing.JTextField();
     jLabel3 = new javax.swing.JLabel();
-    Txtjmlbrg = new javax.swing.JTextField();
+    Txtjmlkamar = new javax.swing.JTextField();
     jLabel4 = new javax.swing.JLabel();
     Txtjmlharga = new javax.swing.JTextField();
     jLabel5 = new javax.swing.JLabel();
@@ -52,10 +52,10 @@ private void initComponents() {
 
     jLabel1.setText("JENIS KAMAR");
 
-    CB_namabrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY ROOM", "EXCEKUTIF ROOM", "DELUXE ROOM", "STANDARD ROOM" }));
-    CB_namabrg.setSelectedIndex(-1);
-    CB_namabrg.addActionListener((java.awt.event.ActionEvent evt) -> {
-        CB_namabrgActionPerformed(evt);
+    CB_namakamar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY ROOM", "EXECUTIF ROOM", "DELUXE ROOM", "STANDARD ROOM" }));
+    CB_namakamar.setSelectedIndex(-1);
+    CB_namakamar.addActionListener((java.awt.event.ActionEvent evt) -> {
+        CB_namakamarActionPerformed(evt);
     });
 
     jLabel2.setText("HARGA KAMAR");
@@ -106,9 +106,9 @@ private void initComponents() {
         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGap(49, 49, 49)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-        .addComponent(CB_namabrg, 0, 150, Short.MAX_VALUE)
-        .addComponent(Txthargabrg)
-        .addComponent(Txtjmlbrg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(CB_namakamar, 0, 150, Short.MAX_VALUE)
+        .addComponent(Txthargakamar)
+        .addComponent(Txtjmlkamar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addComponent(Txtjmlharga)
         .addGroup(layout.createSequentialGroup()
         .addComponent(Txtdiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,16 +133,16 @@ private void initComponents() {
         .addGroup(layout.createSequentialGroup()
         .addGap(41, 41, 41)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-        .addComponent(CB_namabrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        .addComponent(CB_namakamar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(Txthargabrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addComponent(Txthargakamar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(Txtjmlbrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addComponent(Txtjmlkamar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
@@ -172,37 +172,37 @@ private void initComponents() {
 }
 
 
-private void CB_namabrgActionPerformed(java.awt.event.ActionEvent evt) {
+private void CB_namakamarActionPerformed(java.awt.event.ActionEvent evt) {
 
-    namabrg=(String)CB_namabrg.getSelectedItem();
-    if (null != namabrg)switch (namabrg) {
+    namakamar=(String)CB_namakamar.getSelectedItem();
+    if (null != namakamar)switch (namakamar) {
         case "FAMILY ROOM":
-            hargabrg = 2700000;
+            hargakamar = 2700000;
             break;
         case "EXECUTIF ROOM":
-            hargabrg = 1500000;
+            hargakamar = 1500000;
             break;
         case "DELUXE ROOM":
-            hargabrg = 750000;
+            hargakamar = 750000;
             break;
         case "STANDARD ROOM":
-            hargabrg = 650000;
+            hargakamar = 650000;
             break;
         default:
             break;
     }
 
-    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(hargabrg);
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(hargakamar);
     token=new StringTokenizer(gantiformat,".");
     gantiformat=token.nextToken();
     gantiformat=gantiformat.replace(',','.');
-    Txthargabrg.setText(gantiformat);
+    Txthargakamar.setText(gantiformat);
 }
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-    jmlbeli=Integer.parseInt(Txtjmlbrg.getText());
-    jmlharga=jmlbeli*hargabrg;
+    jmlbeli=Integer.parseInt(Txtjmlkamar.getText());
+    jmlharga=jmlbeli*hargakamar;
 
     gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(jmlharga);
     token=new StringTokenizer(gantiformat,".");
@@ -256,9 +256,9 @@ private void TxtTotalbayarFocusLost(java.awt.event.FocusEvent evt) {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-    CB_namabrg.setSelectedIndex(-1);
-    Txthargabrg.setText("");
-    Txtjmlbrg.setText("");
+    CB_namakamar.setSelectedIndex(-1);
+    Txthargakamar.setText("");
+    Txtjmlkamar.setText("");
     Txtjmlharga.setText("");
     TxtTotalbayar.setText("");
     TxtKembalian.setText("");
@@ -279,24 +279,24 @@ public static void main(String args[]) {
         }   
     }
     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-    java.util.logging.Logger.getLogger(KasirToko.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    java.util.logging.Logger.getLogger(KamarHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
 
     java.awt.EventQueue.invokeLater(() -> {
-        new KasirToko().setVisible(true);
+        new KamarHotel().setVisible(true);
     });
     }
 
 // mendlekarasikan variable
-private javax.swing.JComboBox<String> CB_namabrg;
+private javax.swing.JComboBox<String> CB_namakamar;
 private javax.swing.JTextField TxtKembalian;
 private javax.swing.JTextField TxtTotalbayar;
 private javax.swing.JTextField TxtTotalbiaya;
 private javax.swing.JTextField Txtdiskon;
-private javax.swing.JTextField Txthargabrg;
+private javax.swing.JTextField Txthargakamar;
 private javax.swing.JTextField Txthasildiskon;
-private javax.swing.JTextField Txtjmlbrg;
+private javax.swing.JTextField Txtjmlkamar;
 private javax.swing.JTextField Txtjmlharga;
 private javax.swing.JButton jButton1;
 private javax.swing.JButton jButton2;
