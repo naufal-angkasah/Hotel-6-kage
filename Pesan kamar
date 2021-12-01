@@ -1,1118 +1,311 @@
-//package kamarhotel;
-import java.io.*;
-import java.util.Scanner;
-import java.io.FileWriter;
+//package kasirtoko;
+
+import java.text.NumberFormat;
+import java.util.StringTokenizer;
+import java.util.Locale;
+
+public class KasirToko extends javax.swing.JFrame {
+
+public StringTokenizer token;
+public String gantiformat="";
+public String namabrg= "";
+public int jmlbeli;
+public long jmlharga;
+public long hargabrg;
+public long totalbiaya;
+public long kembalian;
+public long jmlbayar;
+
+/**
+* Creates new form KasirToko
+*/
+public KasirToko() {
+    initComponents();
+    CB_namabrg.setSelectedIndex(-1);
+}
+
+@SuppressWarnings("unchecked")
+
+private void initComponents() {
+
+    jLabel1 = new javax.swing.JLabel();
+    CB_namabrg = new javax.swing.JComboBox<>();
+    jLabel2 = new javax.swing.JLabel();
+    Txthargabrg = new javax.swing.JTextField();
+    jLabel3 = new javax.swing.JLabel();
+    Txtjmlbrg = new javax.swing.JTextField();
+    jLabel4 = new javax.swing.JLabel();
+    Txtjmlharga = new javax.swing.JTextField();
+    jLabel5 = new javax.swing.JLabel();
+    Txtdiskon = new javax.swing.JTextField();
+    Txthasildiskon = new javax.swing.JTextField();
+    jLabel6 = new javax.swing.JLabel();
+    TxtTotalbiaya = new javax.swing.JTextField();
+    jButton1 = new javax.swing.JButton();
+    jLabel7 = new javax.swing.JLabel();
+    TxtTotalbayar = new javax.swing.JTextField();
+    jLabel8 = new javax.swing.JLabel();
+    TxtKembalian = new javax.swing.JTextField();
+    jButton2 = new javax.swing.JButton();
+
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+    jLabel1.setText("JENIS KAMAR");
+
+    CB_namabrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FAMILY ROOM", "EXCEKUTIF ROOM", "DELUXE ROOM", "STANDARD ROOM" }));
+    CB_namabrg.setSelectedIndex(-1);
+    CB_namabrg.addActionListener((java.awt.event.ActionEvent evt) -> {
+        CB_namabrgActionPerformed(evt);
+    });
+
+    jLabel2.setText("HARGA KAMAR");
+
+    jLabel3.setText("JUMLAH HARI MENGINAP");
+
+    jLabel4.setText("JUMLAH HARGA");
+
+    jLabel5.setText("DISCOUNT");
+
+    jLabel6.setText("TOTAL BIAYA");
+
+    jButton1.setText("HITUNG TOTAL BIAYA");
+    jButton1.addActionListener((java.awt.event.ActionEvent evt) -> {
+        jButton1ActionPerformed(evt);
+    });
+
+    jLabel7.setText("TOTAL YANG DI BAYAR");
+
+    TxtTotalbayar.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            TxtTotalbayarFocusLost(evt);
+        }
+    });
+
+    jLabel8.setText("UANG KEMBALIAN");
+
+    jButton2.setText("CLEAR");
+    jButton2.addActionListener((java.awt.event.ActionEvent evt) -> {
+        jButton2ActionPerformed(evt);
+    });
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+        .addGap(24, 24, 24)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(49, 49, 49)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(CB_namabrg, 0, 150, Short.MAX_VALUE)
+        .addComponent(Txthargabrg)
+        .addComponent(Txtjmlbrg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(Txtjmlharga)
+        .addGroup(layout.createSequentialGroup()
+        .addComponent(Txtdiskon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(Txthasildiskon))
+        .addComponent(TxtTotalbiaya)
+        .addComponent(TxtTotalbayar)
+        .addComponent(TxtKembalian))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+        .addGap(34, 34, 34)
+        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap())
+        .addGroup(layout.createSequentialGroup()
+        .addGap(74, 74, 74)
+        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(46, Short.MAX_VALUE))))
+    );
+
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+        .addGap(41, 41, 41)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(CB_namabrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(Txthargabrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(Txtjmlbrg, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(Txtjmlharga))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(Txthasildiskon, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(Txtdiskon))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(TxtTotalbiaya, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addGap(33, 33, 33)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(TxtTotalbayar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(TxtKembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+        .addContainerGap(24, Short.MAX_VALUE))
+    );
+    pack();
+}
 
 
-public class Kamar {
+private void CB_namabrgActionPerformed(java.awt.event.ActionEvent evt) {
 
-  
-    public static void main(String[] args) {
- /*       
-    masukkan jenis pelanggan :
-    1. Biasa
-    2. Member   
-            
-    Masukkan jenis kamar :
-    1. Family Room
-    2. Executif Room
-    3. Deluxe Room
-    4. Standard Room
-            
-    
- */          
-           
-            
-    int familyRoom = 2700000;
-    int executifRoom = 1500000;
-    int deluxeRoom = 750000;
-    int standardRoom = 650000;
-    
-    
-    System.out.print("\n\n==== SELAMAT DATANG DI KAGE HOTEL ======\n\n");
-    System.out.print("SPECIAL DISKON!!\n");
-    System.out.print("Pelanggan biasa :  jika menginap lebih dari 7 hari  mendapat diskon 15%\n");
-    System.out.print("Pelanggan Member : jika menginap lebih dari 7 hari mendapat diskon 35% , jika 4 - 7 hari mendapat diskon diskon 10% \n\n");
-    System.out.print("jenis pelanggan\n ");
-    System.out.print("1. Biasa\n");
-    System.out.print(" 2. Member\n");
-    
-    Scanner saya = new Scanner (System.in);
-    System.out.print("masukkan jenis pelanggan : ");
-    int pelanggan = saya.nextInt();
-    
-    Scanner nama = new Scanner (System.in);
-    System.out.print("\nSilahkan Masukkan Nama Anda: ");
-    String name = nama.nextLine();
-
-    System.out.print("\n1. Family Room = Rp. 2.700.000/malam\n");
-    System.out.println("2. Executif Room = Rp. 1.500.000/malam");
-    System.out.println("3. Deluxe Room = Rp. 750.000/malam");
-    System.out.println("4. Standard Room = Rp. 650.000/malam");
-    
-    
-    System.out.print("Masukkan jenis kamar : ");
-    int kamar = saya.nextInt();
-    System.out.print("\nLama anda menginap : ");
-    int menginap = saya.nextInt();
-    
-    System.out.println("\n+-----------------------------------+");
-    System.out.println("|          RESI PEMBAYARAN          |");
-    System.out.println("+-----------------------------------+");
-    System.out.println("KEPADA PELANGGAN KAMI " + "'" +name+ "'");
-    
-    try{
-        FileWriter fw = new FileWriter("testout.txt");    
-    if(pelanggan ==1){
-        if(kamar == 1){
-            if(menginap < 4){
-                System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
-                System.out.println("Anda Menginap Selama "+menginap+" hari");
-                int Diskon = (familyRoom*menginap);
-                System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                int kurang = bayar - (Diskon);
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > Diskon){
-                        int kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-
-            else if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (familyRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            int kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    int kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    int tambah = saya.nextInt();
-                    int selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah1 = saya.nextInt();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                    }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-           }
-
-        else if(menginap > 7){
-                System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
-                System.out.println("Anda Menginap Selama "+menginap+" hari");
-                Float Diskon = (familyRoom*menginap - (familyRoom*menginap*0.15f));
-                System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }           
-         }
-        }
-
-        if(kamar == 2){
-            if(menginap < 4){
-                System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-                System.out.println("Anda Menginap Selama "+menginap+" hari");
-                int Diskon = (executifRoom*menginap);
-                System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                int kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > Diskon){
-                        int kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                        }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-
-        if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (executifRoom*menginap - (executifRoom*menginap));
-            System.out.println("Total Harga = Rp." + Diskon);
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                int kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        int kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                            }
-                        }
-                        System.out.println("Selesai!");
-                        }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (executifRoom*menginap - (executifRoom*menginap*0.15f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            Float kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    Float kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    Float tambah = saya.nextFloat();
-                    Float selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah1 = saya.nextFloat();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = (float) 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-        }
-            
-        
-        }if(kamar == 3){
-            if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (deluxeRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar?");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            int kurang = bayar - Diskon;
-            if(bayar == Diskon){
-                System.out.println("Uang anda pas");
-            }else if (bayar > Diskon){
-                int kembalian = bayar - Diskon;
-                System.out.println("Kembalian anda Rp."+ kembalian);
-            }else{
-                System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-
-        else if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (deluxeRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            int kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    int kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    int tambah = saya.nextInt();
-                    int selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah1 = saya.nextInt();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                    }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-            }
-
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (deluxeRoom*menginap - (deluxeRoom*menginap*0.15f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-        
-            
-        }if(kamar == 4){
-        if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (standardRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            if(bayar == Diskon){
-                System.out.println("Uang anda pas");
-            }else if(bayar > Diskon){
-                int kembalian = bayar - Diskon;
-                System.out.println("Kembalian anda Rp."+ kembalian);
-            }else{
-                int kurang = bayar - Diskon;
-                System.out.println("Maaf, uang anda kurang " + kurang);
-                System.out.print("Masukkan tambahan uang: ");
-                int tambah = saya.nextInt();
-                int selisih = tambah + kurang;
-                while(selisih != 0){
-                    if(selisih < 0){
-                    System.out.println("Uang yang anda masukkan masih kurang");
-                    System.out.print("Masukkan tambahan uang: ");
-                    int tambah1 = saya.nextInt();
-                    selisih = selisih + tambah1;
-                    }else if(selisih > 0){
-                        System.out.println("Kembalian " + selisih);
-                        selisih = 0;
-                }
-                }
-                System.out.println("Selesai!");
-            }
-        }else{
-            System.out.print("Masukkan nomor rekening = ");
-            Double norek = saya.nextDouble();
-        }
-        }
-            
-        if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (standardRoom*menginap);
-            System.out.println("Total Harga = Rp. "+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            int kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    int kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    int tambah = saya.nextInt();
-                    int selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah1 = saya.nextInt();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                    }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-            }
-
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (standardRoom*menginap - (standardRoom*menginap*0.15f));
-            System.out.println("Total Harga = Rp. "+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-    
-        }
-    }else if(pelanggan ==2){
-        if(kamar == 1){
-            if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (familyRoom*menginap);
-                System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                int kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > Diskon){
-                        int kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-            else if(menginap > 3 && menginap <8){
-            System.out.print("\nANDA BERHASIL MEMESAN FAMILY ROOM\n");
-            System.out.println("Anda Menginap Selama "+menginap+ " hari");
-            Float Diskon = (familyRoom*menginap - (familyRoom*menginap*0.1f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN FAMILY ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (familyRoom*menginap - (familyRoom*menginap*0.35f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-                System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-            
-            
-        
-        }if(kamar == 2){
-            if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (executifRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                int kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > Diskon){
-                        int kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                        }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (executifRoom*menginap - (executifRoom*menginap*0.1f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            Float kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    Float kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    Float tambah = saya.nextFloat();
-                    Float selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah1 = saya.nextFloat();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = (float) 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-        }
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN EXECUTIF ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (executifRoom*menginap - (executifRoom*menginap*0.35f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            Float kurang = bayar - Diskon;
-                if(bayar == Diskon){
-                    System.out.println("Uang anda pas");
-                }else if (bayar > (Diskon)){
-                    Float kembalian = bayar - Diskon;
-                    System.out.println("Kembalian anda Rp." + kembalian);
-                }else{
-                    System.out.println("Maaf, uang anda kurang " + kurang);
-                    System.out.print("Masukkan tambahan uang: ");
-                    Float tambah = saya.nextFloat();
-                    Float selisih = tambah + kurang;
-                    while(selisih != 0){
-                        if(selisih < 0){
-                        System.out.println("Uang yang anda masukkan masih kurang");
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah1 = saya.nextFloat();
-                        selisih = selisih + tambah1;
-                        }else if(selisih > 0){
-                            System.out.println("Kembalian " + selisih);
-                            selisih = (float) 0;
-                    }
-                    }
-                    System.out.println("Selesai!");
-                }
-            }else{
-                System.out.print("Masukkan nomor rekening = ");
-                Double norek = saya.nextDouble();
-            }
-        }
-            
-        
-        }if(kamar == 3){
-            if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (deluxeRoom*menginap);
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar?");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            int kurang = bayar - Diskon;
-            if(bayar == Diskon){
-                System.out.println("Uang anda pas");
-            }else if (bayar > Diskon){
-                int kembalian = bayar - Diskon;
-                System.out.println("Kembalian anda Rp."+ kembalian);
-            }else{
-                System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        int tambah = saya.nextInt();
-                        int selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            int tambah1 = saya.nextInt();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (deluxeRoom*menginap - (deluxeRoom*menginap*0.1f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN DELUXE ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (deluxeRoom*menginap - (deluxeRoom*menginap*0.35f));
-            System.out.println("Total Harga = Rp."+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-        }
-        
-            
-        }if(kamar == 4){
-        if(menginap < 4){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            int Diskon = (standardRoom*menginap);
-            System.out.println("Total Harga = Rp. "+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-            System.out.println("1. Dengan Tunai.");
-            System.out.println("2. Dengan Kredit.");
-            System.out.print("Pilihan anda: ");
-            int pilih = saya.nextInt();
-            if(pilih == 1){
-            System.out.print("Uang yang anda Masukkan = ");
-            int bayar = saya.nextInt();
-            if(bayar == Diskon){
-                System.out.println("Uang anda pas");
-            }else if(bayar > Diskon){
-                int kembalian = bayar - Diskon;
-                System.out.println("Kembalian anda Rp."+ kembalian);
-            }else{
-                int kurang = bayar - Diskon;
-                System.out.println("Maaf, uang anda kurang " + kurang);
-                System.out.print("Masukkan tambahan uang: ");
-                int tambah = saya.nextInt();
-                int selisih = tambah + kurang;
-                while(selisih != 0){
-                    if(selisih < 0){
-                    System.out.println("Uang yang anda masukkan masih kurang");
-                    System.out.print("Masukkan tambahan uang: ");
-                    int tambah1 = saya.nextInt();
-                    selisih = selisih + tambah1;
-                    }else if(selisih > 0){
-                        System.out.println("Kembalian " + selisih);
-                        selisih = 0;
-                }
-                }
-                System.out.println("Selesai!");
-            }
-        }else{
-            System.out.print("Masukkan nomor rekening = ");
-            Double norek = saya.nextDouble();
-        }
-            }
-        if(menginap > 3 && menginap <8){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (standardRoom*menginap - (standardRoom*menginap*0.1f));
-            System.out.println("Total Harga = Rp. "+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        else if(menginap > 7){
-            System.out.println("ANDA BERHASIL MEMESAN STANDARD ROOM");
-            System.out.println("Anda Menginap Selama "+menginap+" hari");
-            Float Diskon = (standardRoom*menginap - (standardRoom*menginap*0.35f));
-            System.out.println("Total Harga = Rp. "+ Diskon);
-            System.out.println("Bagaimana anda ingin membayar? ");
-                System.out.println("1. Dengan Tunai.");
-                System.out.println("2. Dengan Kredit.");
-                System.out.print("Pilihan anda: ");
-                int pilih = saya.nextInt();
-                if(pilih == 1){
-                System.out.print("Uang yang anda Masukkan = ");
-                int bayar = saya.nextInt();
-                Float kurang = bayar - Diskon;
-                    if(bayar == Diskon){
-                        System.out.println("Uang anda pas");
-                    }else if (bayar > (Diskon)){
-                        Float kembalian = bayar - Diskon;
-                        System.out.println("Kembalian anda Rp." + kembalian);
-                    }else{
-                        System.out.println("Maaf, uang anda kurang " + kurang);
-                        System.out.print("Masukkan tambahan uang: ");
-                        Float tambah = saya.nextFloat();
-                        Float selisih = tambah + kurang;
-                        while(selisih != 0){
-                            if(selisih < 0){
-                            System.out.println("Uang yang anda masukkan masih kurang");
-                            System.out.print("Masukkan tambahan uang: ");
-                            Float tambah1 = saya.nextFloat();
-                            selisih = selisih + tambah1;
-                            }else if(selisih > 0){
-                                System.out.println("Kembalian " + selisih);
-                                selisih = (float) 0;
-                        }
-                        }
-                        System.out.println("Selesai!");
-                    }
-                }else{
-                    System.out.print("Masukkan nomor rekening = ");
-                    Double norek = saya.nextDouble();
-                }
-            }
-        }
-    } 
-    System.out.print("Untuk Memastikan Kembali, Silahkan Masukkan Total Harga Pesanan Anda: Rp.");
-    int harga = saya.nextInt();
-    fw.write("Nama User: " + name + "\nAnda memesan kamar: " + kamar + "\nLama Anda Menginap: " + menginap+" hari"+ "\nDengan Harga: " + harga);
-    fw.close();
-    }catch(Exception e) {
-        e.getStackTrace();
+    namabrg=(String)CB_namabrg.getSelectedItem();
+    if (null != namabrg)switch (namabrg) {
+        case "FAMILY ROOM":
+            hargabrg = 2700000;
+            break;
+        case "EXECUTIF ROOM":
+            hargabrg = 1500000;
+            break;
+        case "DELUXE ROOM":
+            hargabrg = 750000;
+            break;
+        case "STANDARD ROOM":
+            hargabrg = 650000;
+            break;
+        default:
+            break;
     }
-    System.out.println("TERIMA KASIH TELAH MELAKUKAN PEMBAYARAN");
+
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(hargabrg);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    Txthargabrg.setText(gantiformat);
+}
+
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    jmlbeli=Integer.parseInt(Txtjmlbrg.getText());
+    jmlharga=jmlbeli*hargabrg;
+
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(jmlharga);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    Txtjmlharga.setText(gantiformat);
+
+    long hasildiskon;
+    if (jmlharga >= 7000000) {
+        Txtdiskon.setText("10%");
+        hasildiskon=(jmlharga*10)/100;
+    } else if(jmlharga > 3500000) {
+        Txtdiskon.setText("5%");
+        hasildiskon=(jmlharga*5)/100;
+    } else {
+        Txtdiskon.setText("0%");
+        hasildiskon=0;
     }
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(hasildiskon);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    Txthasildiskon.setText(gantiformat);
+
+    totalbiaya=jmlharga-hasildiskon;
+
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(totalbiaya);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    TxtTotalbiaya.setText(gantiformat);
+}
+
+private void TxtTotalbayarFocusLost(java.awt.event.FocusEvent evt) {
+
+    jmlbayar=Long.parseLong(TxtTotalbayar.getText());
+    kembalian=jmlbayar-totalbiaya;
+
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(jmlbayar);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    TxtTotalbayar.setText(gantiformat);
+
+    gantiformat=NumberFormat.getNumberInstance(Locale.ENGLISH).format(kembalian);
+    token=new StringTokenizer(gantiformat,".");
+    gantiformat=token.nextToken();
+    gantiformat=gantiformat.replace(',','.');
+    TxtKembalian.setText(gantiformat);
+}
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    CB_namabrg.setSelectedIndex(-1);
+    Txthargabrg.setText("");
+    Txtjmlbrg.setText("");
+    Txtjmlharga.setText("");
+    TxtTotalbayar.setText("");
+    TxtKembalian.setText("");
+    Txtdiskon.setText("");
+    Txthasildiskon.setText("");
+    TxtTotalbiaya.setText("");
+
+}
+
+// Method Main untuk menjalankan Program 
+public static void main(String args[]) {
+
+    try {
+    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+        break;
+        }   
+    }
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+    java.util.logging.Logger.getLogger(KasirToko.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+
+
+    java.awt.EventQueue.invokeLater(() -> {
+        new KasirToko().setVisible(true);
+    });
+    }
+
+// mendlekarasikan variable
+private javax.swing.JComboBox<String> CB_namabrg;
+private javax.swing.JTextField TxtKembalian;
+private javax.swing.JTextField TxtTotalbayar;
+private javax.swing.JTextField TxtTotalbiaya;
+private javax.swing.JTextField Txtdiskon;
+private javax.swing.JTextField Txthargabrg;
+private javax.swing.JTextField Txthasildiskon;
+private javax.swing.JTextField Txtjmlbrg;
+private javax.swing.JTextField Txtjmlharga;
+private javax.swing.JButton jButton1;
+private javax.swing.JButton jButton2;
+private javax.swing.JLabel jLabel1;
+private javax.swing.JLabel jLabel2;
+private javax.swing.JLabel jLabel3;
+private javax.swing.JLabel jLabel4;
+private javax.swing.JLabel jLabel5;
+private javax.swing.JLabel jLabel6;
+private javax.swing.JLabel jLabel7;
+private javax.swing.JLabel jLabel8;
 }
