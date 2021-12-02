@@ -102,7 +102,9 @@ public class MenuUtama extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void buttPesanKamarActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        
+        KamarHotel kamarHotel = new KamarHotel();
+        kamarHotel.setVisible(true);
+        this.dispose();
     }                                              
 
     private void buttPesanMakanActionPerformed(java.awt.event.ActionEvent evt) {                                               
@@ -118,7 +120,7 @@ public class MenuUtama extends javax.swing.JFrame {
     }                                        
 
     private void buttInfoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        InformasiKamar informasiKamar = new  InformasiKamar();
+        InfoKamar informasiKamar = new  InfoKamar();
         informasiKamar.setVisible(true);
         this.dispose();
     }                                        
