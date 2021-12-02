@@ -9,16 +9,38 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author 
  */
-public class InformasiKamar extends JFrame{
-
-    public InformasiKamar() {
+public class InformasiKamar extends javax.swing.JFrame{
+        public InformasiKamar() {
+        initComponents();
+    }
+    
+    @SuppressWarnings("unchecked")
+    
+    public void initComponents() {
         setTitle("Infomasi Kamar Hotel-6-Kage");
-        setSize(350, 200);
+        setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         userInterfaceGUI();
         setVisible(true);
-    }
+        Kembali= new javax.swing.JButton();
+        Kembali.setText("Kembali");
+        }
+       
+    
+    
+    /* @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+        butPesan = new javax.swing.JButton();
+        
+        butBack.setText("Pesan");
+        B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butPesanActionPerformed(evt);
+            }
+        });
+    } */
     
     private void userInterfaceGUI(){
         DefaultTableModel model = new DefaultTableModel();
@@ -47,4 +69,6 @@ public class InformasiKamar extends JFrame{
         InformasiKamar obj = new InformasiKamar();
         obj.setVisible(true);
     }
+    
+    private javax.swing.JButton Kembali;
 }
