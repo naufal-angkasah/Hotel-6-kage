@@ -1,5 +1,3 @@
-//package com.mycompany.menumakanan;
-
 /**
  *
  * @author 6kage
@@ -175,6 +173,7 @@ public class InfoKamar extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void buttKembaliActionPerformed(java.awt.event.ActionEvent evt) {                                            
