@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,25 +24,18 @@ public class InformasiKamar extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         userInterfaceGUI();
         setVisible(true);
-        Kembali= new javax.swing.JButton();
-        Kembali.setText("Kembali");
-        }
-       
-    
-    
-    /* @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
-        butPesan = new javax.swing.JButton();
-        
-        butBack.setText("Pesan");
-        B.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butPesanActionPerformed(evt);
-            }
+        //JButton bkembali=new JButton ("Kembali");
+        //bkembali.setBounds(220,210,100,40);
+        //Kembali= new javax.swing.JButton();
+        //Kembali.setText("Kembali");
+        jButton2.setText("Kembali");
+        jButton2.addActionListener((java.awt.event.ActionEvent evt) -> {
+        jButton2ActionPerformed(evt);
         });
-    } */
-    
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    }   
+  
     private void userInterfaceGUI(){
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new Object[]{
@@ -71,4 +65,5 @@ public class InformasiKamar extends javax.swing.JFrame{
     }
     
     private javax.swing.JButton Kembali;
+    private javax.swing.JButton jButton2;
 }
