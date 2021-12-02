@@ -1,9 +1,8 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ */       
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import java.awt.Dimension;
@@ -41,50 +40,32 @@ public class guii extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jenisKamar = new javax.swing.JTextField();
-        harga = new javax.swing.JTextField();
-        jumlahHari = new javax.swing.JTextField();
+        NomorKTP = new javax.swing.JTextField();
+        NomorHP = new javax.swing.JTextField();
+        alamat = new javax.swing.JTextField();
         nama = new javax.swing.JTextField();
-        Review = new javax.swing.JButton();
-        Keluar = new javax.swing.JButton();
+     
+        OK = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Check Out");
+        jLabel1.setText("LOGIN");
 
         jLabel3.setText("Nama");
 
-        jLabel4.setText("Jenis Kamar");
+        jLabel4.setText("Nomor KTP");
 
-        jLabel5.setText("Harga Kamar");
+        jLabel5.setText("Nomor HP");
 
-        jLabel6.setText("Jumlah Hari Menginap");
+        jLabel6.setText("Alamat");
 
-        jenisKamar.addActionListener(new java.awt.event.ActionListener() {
+        
+        OK.setText("OK");
+        OK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenisKamarActionPerformed(evt);
-            }
-        });
-
-        nama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaActionPerformed(evt);
-            }
-        });
-
-        Review.setText("Review");
-        Review.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReviewActionPerformed(evt);
-            }
-        });
-
-        Keluar.setText("Keluar");
-        Keluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KeluarActionPerformed(evt);
+                OKActionPerformed(evt);
             }
         });
 
@@ -105,9 +86,9 @@ public class guii extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(Review, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    
                                     .addGap(39, 39, 39)
-                                    .addComponent(Keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(OK, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGap(60, 60, 60)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,9 +98,9 @@ public class guii extends javax.swing.JFrame {
                                         .addComponent(jLabel5))
                                     .addGap(46, 46, 46)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jenisKamar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jumlahHari, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(NomorKTP, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(NomorHP, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -146,19 +127,19 @@ public class guii extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jenisKamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomorKTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomorHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jumlahHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Review)
-                    .addComponent(Keluar)))
+                    
+                    .addComponent(OK)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,23 +162,16 @@ public class guii extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jenisKamarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
+                                           
 
-    private void ReviewActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        String inputan = JOptionPane.showInputDialog("Inputkan Sesuatu");
-        JOptionPane.showMessageDialog(this, "Kamu meng-inputkan: " + inputan);
+   
+    private void OKActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        MenuUtama menuUtama = new MenuUtama();
+        menuUtama.setVisible(true);
+        this.dispose();
     }                                      
 
-    private void KeluarActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        System.exit(1);
-    }                                      
-
-    private void namaActionPerformed(java.awt.event.ActionEvent evt) {                                     
-    
-        
-    }                                    
+                                      
 
     /**
      * @param args the command line arguments
@@ -235,9 +209,9 @@ public class guii extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton Keluar;
-    private javax.swing.JButton Review;
-    private javax.swing.JTextField harga;
+    private javax.swing.JButton OK;
+
+    private javax.swing.JTextField NomorHP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -248,8 +222,8 @@ public class guii extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextField jenisKamar;
-    private javax.swing.JTextField jumlahHari;
+    private javax.swing.JTextField NomorKTP;
+    private javax.swing.JTextField alamat;
     private javax.swing.JTextField nama;
     // End of variables declaration                   
-}
+} 
