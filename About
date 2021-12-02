@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Naufal Angkasah
  */
-public class kredit extends JFrame {
+public class About extends JFrame {
 
-    public kredit() {
+    public About() {
         setTitle("Infomasi Pediri Hotel-6-Kage");
         setSize(500, 250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
