@@ -1,15 +1,9 @@
-
-package com.mycompany.menumakanan;
-
 /**
  *
  * @author fhonlev
  */
 public class MenuMakanan extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuMakanan
-     */
     public MenuMakanan() {
         initComponents();
     }
