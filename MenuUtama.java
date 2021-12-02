@@ -6,7 +6,7 @@ package com.mycompany.menumakanan;
 
 /**
  *
- * @author ASUS
+ * @author 6kage
  */
 public class MenuUtama extends javax.swing.JFrame {
 
@@ -108,7 +108,7 @@ public class MenuUtama extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void buttPesanKamarActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+        
     }                                              
 
     private void buttPesanMakanActionPerformed(java.awt.event.ActionEvent evt) {                                               
@@ -118,7 +118,9 @@ public class MenuUtama extends javax.swing.JFrame {
     }                                              
 
     private void buttExitActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        MenuUtama menuUtama = new MenuUtama();
+        menuUtama.setVisible(false);
+        this.dispose();
     }                                        
 
     private void buttInfoActionPerformed(java.awt.event.ActionEvent evt) {                                         
