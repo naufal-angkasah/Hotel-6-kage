@@ -184,6 +184,7 @@ private void initComponents() {
                 .addGap(23, 23, 23)
     );
     pack();
+    setLocationRelativeTo(null);
 }
 private void buttKembaliActionPerformed(java.awt.event.ActionEvent evt) {                                            
         MenuUtama menuUtama = new MenuUtama();
