@@ -3,6 +3,7 @@
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
 import java.util.Locale;
+import javax.swing.JButton;
 
 public class KamarHotel extends javax.swing.JFrame {
 
@@ -47,6 +48,7 @@ private void initComponents() {
     jLabel8 = new javax.swing.JLabel();
     TxtKembalian = new javax.swing.JTextField();
     jButton2 = new javax.swing.JButton();
+    buttKembali = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,13 @@ private void initComponents() {
     CB_namakamar.addActionListener((java.awt.event.ActionEvent evt) -> {
         CB_namakamarActionPerformed(evt);
     });
+    
+    buttKembali.setText("Kembali ke Menu Utama");
+    buttKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttKembaliActionPerformed(evt);
+            }
+        });
 
     jLabel2.setText("HARGA KAMAR");
 
@@ -126,6 +135,10 @@ private void initComponents() {
         .addGap(74, 74, 74)
         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap(46, Short.MAX_VALUE))))
+        .addGroup(layout.createSequentialGroup()
+                .addGap(314, 314, 314)
+                .addComponent(buttKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
     );
 
     layout.setVerticalGroup(
@@ -167,10 +180,16 @@ private void initComponents() {
         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(TxtKembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
         .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(buttKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
     );
     pack();
 }
-
+private void buttKembaliActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        MenuUtama menuUtama = new MenuUtama();
+        menuUtama.setVisible(true);
+        this.dispose();
+    } 
 
 private void CB_namakamarActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -290,6 +309,7 @@ public static void main(String args[]) {
 
 // mendlekarasikan variable
 private javax.swing.JComboBox<String> CB_namakamar;
+private javax.swing.JButton buttKembali;
 private javax.swing.JTextField TxtKembalian;
 private javax.swing.JTextField TxtTotalbayar;
 private javax.swing.JTextField TxtTotalbiaya;
