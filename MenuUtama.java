@@ -122,7 +122,9 @@ public class MenuUtama extends javax.swing.JFrame {
     }                                        
 
     private void buttInfoActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        InformasiKamar informasiKamar = new  InformasiKamar();
+        informasiKamar.setVisible(true);
+        this.dispose();
     }                                        
 
     /**
